@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Cycling Hub | Eco-Friendly MTB, Road & E-Bike Reviews</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #27ae60;
+            --secondary: #2c5530;
+            --accent: #8fbc8f;
+            --e-bike: #4caf50;
+            --light: #f1f8e9;
+            --dark: #1b5e20;
+            --gray: #78909c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #219653;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #1e4724;
+        }
+        
+        .btn-ebike {
+            background: var(--e-bike);
+        }
+        
+        .btn-ebike:hover {
+            background: #3d8b40;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto;
+        }
+        
+        .ebike-section .section-title:after {
+            background: var(--e-bike);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 85, 48, 0.7), rgba(44, 85, 48, 0.8)), url('https://images.unsplash.com/photo-1541625602330-2277a4c46182?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .category-tab {
+            background: rgba(255,255,255,0.2);
+            padding: 12px 24px;
+            margin: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .category-tab.active, .category-tab:hover {
+            background: var(--primary);
+        }
+        
+        .category-tab.ebike {
+            background: rgba(76, 175, 80, 0.3);
+        }
+        
+        .category-tab.ebike.active, .category-tab.ebike:hover {
+            background: var(--e-bike);
+        }
+        
+        /* Eco Impact Section */
+        .eco-impact {
+            background: var(--light);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .eco-impact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .eco-impact p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #555;
+        }
+        
+        .eco-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .eco-stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: 250px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .eco-stat-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .eco-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .eco-stat-card h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .eco-stat-card p {
+            font-size: 1rem;
+            margin-bottom: 0;
+            color: #666;
+        }
+        
+        /* E-Bike Niche Section */
+        .ebike-niche {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .ebike-niche h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .ebike-niche p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #555;
+        }
+        
+        .ebike-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .ebike-type-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: 300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .ebike-type-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .ebike-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--e-bike);
+        }
+        
+        .ebike-type-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .ebike-type-card p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        /* Retailers Section */
+        .retailers-section {
+            background: white;
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .retailers-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .retailer-logo {
+            height: 40px;
+            margin: 10px 20px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .retailer-logo:hover {
+            opacity: 1;
+        }
+        
+        /* Product Reviews */
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .review-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .review-content {
+            padding: 20px;
+        }
+        
+        .review-category {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .review-category.ebike {
+            background: var(--e-bike);
+        }
+        
+        .review-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .review-excerpt {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+        
+        .affiliate-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .affiliate-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            color: #333;
+        }
+        
+        .affiliate-btn:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .affiliate-btn img {
+            height: 16px;
+            margin-right: 8px;
+        }
+        
+        .amazon-btn {
+            border-color: #ff9900;
+        }
+        
+        .amazon-btn:hover {
+            background: #fff3e0;
+        }
+        
+        .decathlon-btn {
+            border-color: #0055a5;
+        }
+        
+        .decathlon-btn:hover {
+            background: #e6f0ff;
+        }
+        
+        .wiggle-btn {
+            border-color: #e20074;
+        }
+        
+        .wiggle-btn:hover {
+            background: #ffe6f2;
+        }
+        
+        .ebay-btn {
+            border-color: #0064d2;
+        }
+        
+        .ebay-btn:hover {
+            background: #e6f0ff;
+        }
+        
+        /* Top 10 Lists */
+        .top10-section {
+            background: var(--light);
+        }
+        
+        .top10-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .top10-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .top10-header {
+            background: var(--secondary);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .top10-header.ebike {
+            background: var(--e-bike);
+        }
+        
+        .top10-list {
+            list-style: none;
+            padding: 15px;
+        }
+        
+        .top10-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .top10-item:last-child {
+            border-bottom: none;
+        }
+        
+        .rank {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 25px;
+            height: 25px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-size: 0.8rem;
+        }
+        
+        .rank.ebike {
+            background: var(--e-bike);
+        }
+        
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .blog-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .blog-content {
+            padding: 20px;
+        }
+        
+        .blog-meta {
+            display: flex;
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+        
+        .blog-meta span {
+            margin-right: 15px;
+        }
+        
+        .blog-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .blog-excerpt {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Buyer's Guides */
+        .guides-section {
+            background: var(--light);
+        }
+        
+        .guide-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .guide-tab {
+            background: white;
+            padding: 10px 20px;
+            margin: 0 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .guide-tab.active, .guide-tab:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .guide-tab.ebike.active, .guide-tab.ebike:hover {
+            background: var(--e-bike);
+        }
+        
+        .guide-content {
+            display: none;
+        }
+        
+        .guide-content.active {
+            display: block;
+        }
+        
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .guide-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .guide-img {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .guide-content-inner {
+            padding: 20px;
+        }
+        
+        .guide-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .guide-excerpt {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 20px;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .newsletter-btn:hover {
+            background: #219653;
+        }
+        
+        /* SEO Content Section */
+        .seo-content {
+            background: white;
+            padding: 60px 0;
+            border-top: 1px solid #eee;
+        }
+        
+        .seo-content h2 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .seo-content h3 {
+            color: var(--secondary);
+            margin: 30px 0 15px;
+            font-size: 1.4rem;
+        }
+        
+        .seo-content p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .seo-content ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .seo-content li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #aaa;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: #333;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: background 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+        }
+        
+        .affiliate-disclosure {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .category-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .category-tab {
+                margin: 5px;
+            }
+            
+            .retailers-container {
+                justify-content: center;
+            }
+            
+            .retailer-logo {
+                height: 30px;
+                margin: 5px 10px;
+            }
+            
+            .eco-stats, .ebike-types {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .eco-stat-card, .ebike-type-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .affiliate-buttons {
+                flex-direction: column;
+            }
+            
+            .affiliate-btn {
+                justify-content: center;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-btn {
+                border-radius: 4px;
+                padding: 12px;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 40px 0;
+            }
+            
+            .review-grid, .blog-grid, .guide-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Green<span>Cycling</span>Hub</a>
+            <nav>
+                <ul>
+                    <li><a href="#reviews">Product Reviews</a></li>
+                    <li><a href="#eco-impact">Eco Impact</a></li>
+                    <li><a href="#ebikes">E-Bikes</a></li>
+                    <li><a href="#top10">Top 10 Lists</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#" class="btn">Newsletter</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">☰</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Ride Green, Live Sustainable</h1>
+            <p>Expert reviews for eco-conscious cyclists. Discover how cycling reduces your carbon footprint while enjoying nature.</p>
+            <a href="#reviews" class="btn">Explore Eco-Friendly Gear</a>
+            
+            <div class="category-tabs">
+                <div class="category-tab active">Mountain Bikes</div>
+                <div class="category-tab">Road Bikes</div>
+                <div class="category-tab ebike">E-Mountain Bikes</div>
+                <div class="category-tab ebike">E-Road Bikes</div>
+                <div class="category-tab">Sustainable Gear</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eco Impact Section -->
+    <section id="eco-impact" class="eco-impact">
+        <div class="container">
+            <h2>Cycling: Your Path to a Greener Planet</h2>
+            <p>Every pedal stroke contributes to a cleaner environment. Discover how choosing cycling over driving makes a real difference.</p>
+            
+            <div class="eco-stats">
+                <div class="eco-stat-card">
+                    <div class="eco-icon">🌍</div>
+                    <h3>2.5 tons</h3>
+                    <p>Annual CO₂ reduction per cyclist</p>
+                </div>
+                
+                <div class="eco-stat-card">
+                    <div class="eco-icon">💨</div>
+                    <h3>0 emissions</h3>
+                    <p>Cycling produces zero direct emissions</p>
+                </div>
+                
+                <div class="eco-stat-card">
+                    <div class="eco-icon">🌳</div>
+                    <h3>15 trees</h3>
+                    <p>Equivalent carbon absorption of daily cycling</p>
+                </div>
+                
+                <div class="eco-stat-card">
+                    <div class="eco-icon">⛽</div>
+                    <h3>300 gallons</h3>
+                    <p>Gasoline saved annually by cycling commuters</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- E-Bike Niche Section -->
+    <section id="ebikes" class="ebike-niche">
+        <div class="container">
+            <h2>E-Bikes: Green Transportation Revolution</h2>
+            <p>Electric bikes offer sustainable mobility with a tiny fraction of the environmental impact of cars.</p>
+            <a href="#ebike-reviews" class="btn btn-ebike">Explore E-Bike Reviews</a>
+            
+            <div class="ebike-types">
+                <div class="ebike-type-card">
+                    <div class="ebike-icon">⚡</div>
+                    <h3>Electric Mountain Bikes</h3>
+                    <p>Access remote natural areas with minimal environmental impact compared to motorized vehicles.</p>
+                    <a href="#" class="btn btn-ebike">View E-MTBs</a>
+                </div>
+                
+                <div class="ebike-type-card">
+                    <div class="ebike-icon">🚴‍♂️</div>
+                    <h3>Electric Road Bikes</h3>
+                    <p>Replace car trips for commuting and errands while enjoying the health benefits of cycling.</p>
+                    <a href="#" class="btn btn-ebike">View E-Road Bikes</a>
+                </div>
+                
+                <div class="ebike-type-card">
+                    <div class="ebike-icon">🔋</div>
+                    <h3>Sustainable E-Bike Tech</h3>
+                    <p>Learn about recyclable batteries, solar charging, and energy-efficient motor systems.</p>
+                    <a href="#" class="btn btn-ebike">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retailers Section -->
+    <section class="retailers-section">
+        <div class="container">
+            <h3 style="text-align: center; margin-bottom: 20px; color: var(--secondary);">Shop at Our Eco-Conscious Retailer Partners</h3>
+            <div class="retailers-container">
+                <a href="#" class="retailer-link">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="retailer-logo">
+                </a>
+                <a href="#" class="retailer-link">
+                    <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/8/8e/Decathlon_logo.svg/1200px-Decathlon_logo.svg.png" alt="Decathlon" class="retailer-logo">
+                </a>
+                <a href="#" class="retailer-link">
+                    <img src="https://www.wiggle.com/static-content/images/logo.svg" alt="Wiggle" class="retailer-logo">
+                </a>
+                <a href="#" class="retailer-link">
+                    <img src="https://logos-world.net/wp-content/uploads/2020/04/ChainReactionCycles-Logo.png" alt="Chain Reaction Cycles" class="retailer-logo">
+                </a>
+                <a href="#" class="retailer-link">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg" alt="eBay" class="retailer-logo">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Reviews -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <h2 class="section-title">Eco-Friendly Product Reviews</h2>
+            <div class="review-grid">
+                <!-- Review 1 - Traditional MTB -->
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Mountain bike on forest trail" class="review-img">
+                    <div class="review-content">
+                        <span class="review-category">MTB</span>
+                        <h3 class="review-title">Trek Fuel EX 9.8: Sustainable Trail Performance</h3>
+                        <div class="rating">★★★★★</div>
+                        <p class="review-excerpt">Made with recycled aluminum and designed for longevity. The perfect companion for eco-conscious trail adventures...</p>
+                        
+                        <div class="affiliate-buttons">
+                            <a href="#" class="affiliate-btn amazon-btn">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+                                Check Price
+                            </a>
+                            <a href="#" class="affiliate-btn wiggle-btn">
+                                <img src="https://www.wiggle.com/static-content/images/logo.svg" alt="Wiggle">
+                                View Deal
+                            </a>
+                            <a href="#" class="affiliate-btn ebay-btn">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg" alt="eBay">
+                                Find Used
+                            </a>
+                        </div>
+                        
+                        <a href="#" class="btn" style="margin-top: 15px; display: block;">Read Full Review</a>
+                    </div>
+                </div>
+                
+                <!-- Review 2 - E-MTB -->
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Electric mountain bike in mountains" class="review-img">
+                    <div class="review-content">
+                        <span class="review-category ebike">E-MTB</span>
+                        <h3 class="review-title">Specialized Turbo Levo: Car Replacement Power</h3>
+                        <div class="rating">★★★★☆</div>
+                        <p class="review-excerpt">Replace up to 80% of car trips with this powerful e-MTB. Features a recyclable battery and energy-efficient motor...</p>
+                        
+                        <div class="affiliate-buttons">
+                            <a href="#" class="affiliate-btn amazon-btn">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+                                Check Price
+                            </a>
+                            <a href="#" class="affiliate-btn decathlon-btn">
+                                <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/8/8e/Decathlon_logo.svg/1200px-Decathlon_logo.svg.png" alt="Decathlon">
+                                Compare
+                            </a>
+                            <a href="#" class="affiliate-btn ebay-btn">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg" alt="eBay">
+                                Find Used
+                            </a>
+                        </div>
+                        
+                        <a href="#" class="btn btn-ebike" style="margin-top: 15px; display: block;">Read Full Review</a>
+                    </div>
+                </div>
+                
+                <!-- Review 3 - E-Road Bike -->
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1535052498072-9d5d61262c8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Road bike on scenic coastal road" class="review-img">
+                    <div class="review-content">
+                        <span class="review-category ebike">E-Road</span>
+                        <h3 class="review-title">Trek Domane+ LT: Zero-Emission Commuting</h3>
+                        <div class="rating">★★★★★</div>
+                        <p class="review-excerpt">The perfect car alternative for urban commuting. Solar-charge compatible and built with sustainable materials...</p>
+                        
+                        <div class="affiliate-buttons">
+                            <a href="#" class="affiliate-btn amazon-btn">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+                                Check Price
+                            </a>
+                            <a href="#" class="affiliate-btn wiggle-btn">
+                                <img src="https://www.wiggle.com/static-content/images/logo.svg" alt="Wiggle">
+                                View Deal
+                            </a>
+                            <a href="#" class="affiliate-btn decathlon-btn">
+                                <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/8/8e/Decathlon_logo.svg/1200px-Decathlon_logo.svg.png" alt="Decathlon">
+                                Compare
+                            </a>
+                        </div>
+                        
+                        <a href="#" class="btn btn-ebike" style="margin-top: 15px; display: block;">Read Full Review</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#" class="btn btn-secondary">View All Reviews</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top 10 Lists -->
+    <section id="top10" class="top10-section">
+        <div class="container">
+            <h2 class="section-title">Top 10 Eco-Friendly Cycling Lists</h2>
+            <div class="top10-grid">
+                <!-- List 1 - Traditional MTB -->
+                <div class="top10-card">
+                    <div class="top10-header">
+                        <h3>Most Sustainable Mountain Bikes</h3>
+                    </div>
+                    <ul class="top10-list">
+                        <li class="top10-item"><span class="rank">1</span> Trek Fuel EX (Recycled Aluminum)</li>
+                        <li class="top10-item"><span class="rank">2</span> Cannondale Habit (Eco-friendly manufacturing)</li>
+                        <li class="top10-item"><span class="rank">3</span> Specialized Stumpjumper (Carbon offset program)</li>
+                        <li class="top10-item"><span class="rank">4</span> Giant Trance (Sustainable packaging)</li>
+                        <li class="top10-item"><span class="rank">5</span> Santa Cruz 5010 (Local manufacturing)</li>
+                        <li class="top10-item" style="justify-content: center; margin-top: 10px;">
+                            <a href="#" class="btn">View Full List & Retailers</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- List 2 - E-MTB -->
+                <div class="top10-card">
+                    <div class="top10-header ebike">
+                        <h3>Greenest Electric Mountain Bikes</h3>
+                    </div>
+                    <ul class="top10-list">
+                        <li class="top10-item"><span class="rank ebike">1</span> Specialized Turbo Levo (Recyclable battery)</li>
+                        <li class="top10-item"><span class="rank ebike">2</span> Trek Rail (Energy recovery system)</li>
+                        <li class="top10-item"><span class="rank ebike">3</span> Giant Trance X E+ (Solar charging compatible)</li>
+                        <li class="top10-item"><span class="rank ebike">4</span> Canyon Spectral:ON (Eco mode efficiency)</li>
+                        <li class="top10-item"><span class="rank ebike">5</span> Santa Cruz Heckler (Low energy consumption)</li>
+                        <li class="top10-item" style="justify-content: center; margin-top: 10px;">
+                            <a href="#" class="btn btn-ebike">View Full List & Retailers</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- List 3 - E-Road -->
+                <div class="top10-card">
+                    <div class="top10-header ebike">
+                        <h3>Best Commuter E-Bikes</h3>
+                    </div>
+                    <ul class="top10-list">
+                        <li class="top10-item"><span class="rank ebike">1</span> Specialized Turbo Creo SL (Ultra efficient)</li>
+                        <li class="top10-item"><span class="rank ebike">2</span> Trek Domane+ LT (Car replacement)</li>
+                        <li class="top10-item"><span class="rank ebike">3</span> Canyon Grail:ON (Cargo capacity)</li>
+                        <li class="top10-item"><span class="rank ebike">4</span> Orbea Gain (Lightweight design)</li>
+                        <li class="top10-item"><span class="rank ebike">5</span> Bianchi Aria E-Road (Urban mobility)</li>
+                        <li class="top10-item" style="justify-content: center; margin-top: 10px;">
+                            <a href="#" class="btn btn-ebike">View Full List & Retailers</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#" class="btn">View All Top 10 Lists</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Articles -->
+    <section id="blog" class="blog-section">
+        <div class="container">
+            <h2 class="section-title">Eco-Cycling Blog</h2>
+            <div class="blog-grid">
+                <!-- Article 1 - E-Bike Focus -->
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1601935111741-3b1df2ad52c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="E-MTB rider on mountain trail" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>Eco Impact</span>
+                            <span>June 12, 2023</span>
+                            <span>10 min read</span>
+                        </div>
+                        <h3 class="blog-title">How E-Bikes Are Revolutionizing Urban Sustainability</h3>
+                        <p class="blog-excerpt">Discover how electric bikes are reducing city congestion and emissions while promoting healthier communities...</p>
+                        <a href="#" class="btn btn-ebike">Read Article</a>
+                    </div>
+                </div>
+                
+                <!-- Article 2 - Traditional Focus -->
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Road cyclists on scenic route" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>Sustainability</span>
+                            <span>May 10, 2023</span>
+                            <span>10 min read</span>
+                        </div>
+                        <h3 class="blog-title">The Carbon Footprint of Cycling vs Driving</h3>
+                        <p class="blog-excerpt">Detailed analysis showing how choosing a bike over a car dramatically reduces your environmental impact...</p>
+                        <a href="#" class="btn">Read Article</a>
+                    </div>
+                </div>
+                
+                <!-- Article 3 - E-Bike Tech -->
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="E-bike technology close-up" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>Green Tech</span>
+                            <span>June 5, 2023</span>
+                            <span>8 min read</span>
+                        </div>
+                        <h3 class="blog-title">Recyclable Batteries & Solar Charging for E-Bikes</h3>
+                        <p class="blog-excerpt">The latest innovations in sustainable e-bike power systems that minimize environmental impact...</p>
+                        <a href="#" class="btn btn-ebike">Read Article</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#" class="btn btn-secondary">View All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO Content -->
+    <section class="seo-content">
+        <div class="container">
+            <h2>Cycling: The Ultimate Green Transportation Solution</h2>
+            
+            <h3>Reducing Carbon Emissions Through Cycling</h3>
+            <p>At Green Cycling Hub, we believe that every bicycle represents a step toward a more sustainable future. Cycling produces zero direct emissions, requires minimal infrastructure compared to cars, and promotes healthier lifestyles and communities.</p>
+            
+            <h3>Environmental Benefits of Choosing Bicycles</h3>
+            <ul>
+                <li><strong>Zero Emissions:</strong> Bicycles produce no greenhouse gases or air pollutants during operation</li>
+                <li><strong>Reduced Congestion:</strong> More cyclists means fewer cars on the road, decreasing traffic and idling emissions</li>
+                <li><strong>Minimal Infrastructure Impact:</strong> Bikes require far less space and resources than car infrastructure</li>
+                <li><strong>Energy Efficiency:</strong> Cycling is the most energy-efficient mode of transportation ever invented</li>
+                <li><strong>Sustainable Manufacturing:</strong> Modern bikes increasingly use recycled materials and eco-friendly production methods</li>
+            </ul>
+            
+            <h3>Electric Bikes: The Green Transportation Revolution</h3>
+            <p>E-bikes are transforming urban mobility by making cycling accessible to more people while maintaining minimal environmental impact. Even when accounting for electricity generation, e-bikes produce less than 1% of the emissions per mile compared to the average car.</p>
+            
+            <h3>Our Commitment to Sustainable Cycling</h3>
+            <p>We carefully evaluate every product we review for its environmental credentials, including:</p>
+            <ul>
+                <li>Use of recycled and sustainable materials in manufacturing</li>
+                <li>Energy efficiency and battery recyclability for e-bikes</li>
+                <li>Durability and repairability to extend product lifespan</li>
+                <li>Manufacturer sustainability initiatives and carbon offset programs</li>
+                <li>Packaging and shipping environmental impact</li>
+            </ul>
+            
+            <p>By choosing to cycle, you're not just selecting a mode of transportation - you're making a conscious decision to reduce your environmental footprint, improve your health, and contribute to more sustainable communities. Green Cycling Hub is your trusted partner in this journey toward a cleaner, healthier planet.</p>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join the Green Cycling Movement</h2>
+            <p>Subscribe to our newsletter for eco-friendly gear reviews, sustainability tips, and exclusive deals on green cycling products.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Green Cycling Hub</h3>
+                    <p>Your trusted source for eco-friendly cycling gear reviews, sustainability insights, and green transportation solutions.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Follow us on YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Eco Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Sustainable Mountain Bikes</a></li>
+                        <li><a href="#">Eco Road Bikes</a></li>
+                        <li><a href="#">Green E-Mountain Bikes</a></li>
+                        <li><a href="#">Sustainable E-Road Bikes</a></li>
+                        <li><a href="#">Eco Components</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Green Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Carbon Calculator</a></li>
+                        <li><a href="#">Eco Product Reviews</a></li>
+                        <li><a href="#">Sustainability Guides</a></li>
+                        <li><a href="#">Green Blog Articles</a></li>
+                        <li><a href="#">Eco Maintenance Tips</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Our Mission</a></li>
+                        <li><a href="#">Environmental Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="affiliate-disclosure">
+                <p><strong>Affiliate Disclosure:</strong> Green Cycling Hub is a participant in various affiliate programs including Amazon Associates, Decathlon Affiliate Program, Wiggle/Chain Reaction Cycles, and eBay Partner Network. We may earn a commission when you buy through links on our site. We only promote products that meet our sustainability criteria.</p>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Green Cycling Hub. All rights reserved. | Committed to a Sustainable Future</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality for buyer's guides
+        document.addEventListener('DOMContentLoaded', function() {
+            const guideTabs = document.querySelectorAll('.guide-tab');
+            const guideContents = document.querySelectorAll('.guide-content');
+            
+            guideTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    guideTabs.forEach(t => t.classList.remove('active'));
+                    guideContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = tab.getAttribute('data-tab');
+                    const contentId = `${tabId}-guides`;
+                    document.getElementById(contentId).classList.add('active');
+                });
+            });
+            
+            // Category tabs in hero section
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                });
+            });
+            
+            // Mobile menu toggle
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const nav = document.querySelector('nav ul');
+            
+            mobileMenu.addEventListener('click', () => {
+                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+            });
+            
+            // Responsive nav adjustment
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    nav.style.display = 'flex';
+                } else {
+                    nav.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
