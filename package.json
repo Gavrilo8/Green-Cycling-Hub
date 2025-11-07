@@ -1,0 +1,12 @@
+{
+  "name": "cycling-gear-hub",
+  "version": "1.0.0",
+  "description": "Eco-friendly cycling gear reviews and affiliate site",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "build": "echo 'No build process needed for static site'"
+  },
+  "keywords": ["cycling", "eco-friendly", "affiliate", "reviews"],
+  "author": "Your Name",
+  "license": "MIT"
+}
